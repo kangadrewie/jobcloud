@@ -1,0 +1,87 @@
+html, body {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background-image: url('bg.jpg');
+	background-size: cover;
+}
+
+nav {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	max-height: 80px;
+	min-height: 80px;
+	width: 100%;
+
+}
+
+nav img {
+	display: block;
+	width: 95px;
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#search_container {
+	width: 50%;
+	height: calc(100vh - 80px);
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#search_bar {
+	height: 80px;
+	width: 70%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: auto;
+}
+
+#location {
+	height: 80px;
+	width: 30%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+
+input {
+	height: 40px;
+	display: inline-block;
+	margin: auto;
+	border-radius: 10px;
+}
+
+#search_bar input {
+	width: 100%;
+	margin-right: 10%;
+}
+
+#location input {
+	width: 100%;
+	margin-left: 10%;
+}
+
+#search_button {
+	height: 80px;
+	width: 20%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+button {
+	height: 43px;
+	width: 100%;
+	display: inline-block;
+	margin-left: 130%;
+	border-radius: 10px;
+
+	background-color: orange;
+}
