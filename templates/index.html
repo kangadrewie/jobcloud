@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JobCloud</title>
+	<link rel="stylesheet" href="/static/css/styles.css/">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="/static/scripts.js"></script>
+</head>
+<body>
+<nav>
+	<img src="/static/img/logo-2.png">
+	<button class="btn" type="button"><span>Compare CV</span></button>
+</nav>
+
+<section style="background-image: url('static/img/bg.jpg')">
+	<div class="wrap" id="searchContainer">
+		<h1>JobCloud</h1>
+		<h2>Discover Exactly What Employers Want</h2>
+		<div class="search" id="search">
+			<input type="text" class="searchTerm" id="searchTerm" placeholder="What are you looking for?" onclick="hoverCloud()">
+			<input type="text" class="searchLocation" id="searchLocation" placeholder="Location" onclick="hoverCloud()">
+			<button type="submit" class="searchButton" id="searchButton" onclick="fetchCloud()">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	</div>
+	<div class="lds-ellipsis" id="loadIcon"><div></div><div></div><div></div><div></div></div>
+</section>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
