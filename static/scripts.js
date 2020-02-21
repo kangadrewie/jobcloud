@@ -17,6 +17,8 @@ function fetchCloud() {
 	// searchButton.style.opacity
 	searchBar.style.opacity = '0';
 	loadIcon.style.opacity = '1';
+	searchBar.style.cursor = 'none';
+
 }
 
 function hoverCloud() {
