@@ -11,6 +11,8 @@ from wordcloud import WordCloud, STOPWORDS
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
 import pandas as pd 
+import matplotlib.font_manager
+matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
 
 jobTitle = 'engineer'
 location = 'dublin'
@@ -67,6 +69,9 @@ class JobSearch():
 						background_color ='white', 
 						stopwords = stopwords, 
 						min_font_size = 18).generate(comment_words) 
+
+		plt.rcParams['font.family'] = 'sans-serif'
+		plt.rcParams['font.sans-serif'] = 'Comic Sans MS'
 
 		# plot the WordCloud image
 		fig = plt.figure(figsize = (8, 8), facecolor = None) 

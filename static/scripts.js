@@ -1,14 +1,21 @@
 function fetchCloud() {
+	let h1 = document.getElementById('title');
 	searchContainer = document.getElementById('searchContainer');
 	searchTerm = document.getElementById('searchTerm');
 	searchLocation = document.getElementById('searchLocation');
 	searchBar = document.getElementById('search');
 	loadIcon = document.getElementById('loadIcon');
 
-	searchContainer.style.top = '180px';
-	searchTerm.style.backgroundColor = 'transparent';
-	searchLocation.style.backgroundColor = 'transparent';
-	searchBar.style.opacity = '0.2';
+	searchContainer.style.opacity = '1';
+	h1.style.top = '0px';
+	h1.style.fontSize = '28px';
+	// searchTerm.style.backgroundColor = 'transparent';
+	// searchLocation.style.backgroundColor = 'transparent';
+
+	// searchTerm.style.opacity = '0';
+	// searchLocation.style.opacity = '0';
+	// searchButton.style.opacity
+	searchBar.style.opacity = '0';
 	loadIcon.style.opacity = '1';
 }
 

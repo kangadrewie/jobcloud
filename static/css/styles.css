@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300,700);
 @import "@material/button/mdc-button";
 
 html, body {
@@ -8,6 +8,7 @@ html, body {
 	font-family: 'Open Sans', sans-serif;
     overflow: scroll;
 	overflow-x: hidden;
+	background-size: cover;
 }
 
 ::-webkit-scrollbar {
@@ -23,7 +24,16 @@ section {
 	position: absolute;
 	width: 100%;
 	height: 100vh;
-	background-size: cover;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 nav {
@@ -35,8 +45,8 @@ nav {
 }
 
 nav img {
-	width: 125px;
-	margin-top: 25px;
+	width: 100px;
+	margin-top: 35px;
 	margin-left: 6%;
 }
 
@@ -46,7 +56,7 @@ nav img {
 	display: block;
 	margin: 30px auto;
 	padding: 0;
-	margin-top: 60px;
+	margin-top: 65px;
 	margin-right: 6%;
 	overflow: hidden;
 
@@ -61,7 +71,7 @@ nav img {
 	transition: border .2s;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover {
 	background-color: #00B4CC;
 	border: 2px solid #00B4CC;
 }
@@ -82,6 +92,9 @@ nav img {
 	display: flex;
 }
 
+#search {
+	transition: all .2s;
+}
 .searchTerm {
 	width: 100%;
 	border: 3px solid #00B4CC;
@@ -94,6 +107,7 @@ nav img {
 	color: white;
 	outline: none;
 	color: #9DBFAF;
+	border-radius: 5px 5px 5px 5px;
     -moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
@@ -113,6 +127,7 @@ nav img {
 	color: white;
 	outline: none;
 	color: #9DBFAF;
+	border-radius: 5px 5px 5px 5px;
     -moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
@@ -128,7 +143,7 @@ nav img {
 	background: #00B4CC;
 	text-align: center;
 	color: #fff;
-	border-radius: 0 5px 5px 0;
+	border-radius: 5px 5px 5px 5px;
 	cursor: pointer;
 	font-size: 25px;
 	margin-left: 7px;
@@ -155,7 +170,8 @@ nav img {
 }
 
 input::placeholder {
-	font-size: 20px;
+	opacity: 0.5;
+	font-size: 18px;
 	/*Resize the wrap to see the search bar change!*/
 }
 
@@ -176,7 +192,8 @@ input[type="text"] {
 h1 {
 	font-size: 60px;
 	color: white;
-	text-align: center;
+	text-align: center; 
+	transition: all 0.3s
 }
 
 h2 {
@@ -185,6 +202,10 @@ h2 {
 	padding-bottom: 10%;
 	color: white;
 	font-weight: 300;
+}
+
+.bold-font {
+	font-weight: 700;
 }
 
 .lds-ellipsis {

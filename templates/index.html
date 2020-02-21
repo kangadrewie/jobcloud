@@ -6,19 +6,19 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="/static/scripts.js"></script>
 </head>
-<body>
+<body style="background-image: url('static/img/bg.jpg')">
 <nav>
 	<img src="/static/img/logo-2.png">
 	<button class="btn" type="button"><span>Compare CV</span></button>
 </nav>
 
-<section style="background-image: url('static/img/bg.jpg')">
+<section>
 	<div class="wrap" id="searchContainer">
-		<h1>JobCloud</h1>
-		<h2>Discover Exactly What Employers Want</h2>
+		<h1 id="title" style="font-weight: 300">Job<span class="bold-font">Cloud</span></h1>
+		<h2 id="subtitle">Discover Exactly What Employers Want</h2>
 		<div class="search" id="search">
-			<input type="text" class="searchTerm" id="searchTerm" placeholder="What are you looking for?" onclick="hoverCloud()">
-			<input type="text" class="searchLocation" id="searchLocation" placeholder="Location" onclick="hoverCloud()">
+			<input type="text" class="searchTerm" id="searchTerm" placeholder="What are you looking for?" onclick="hoverCloud()" required="text">
+			<input type="text" class="searchLocation" id="searchLocation" placeholder="Location" onclick="hoverCloud()" required="text">
 			<button type="submit" class="searchButton" id="searchButton" onclick="fetchCloud()">
 				<i class="fa fa-search"></i>
 			</button>
