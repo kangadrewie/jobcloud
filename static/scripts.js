@@ -80,8 +80,6 @@ function cloudClick() {
 		cloudWrap.classList.remove('no-hover');
 		cloudWrap.style.transition = 'all 0.5s';
 		cloudWrap.classList.add('hover');
-		cloudWrap.style.maxHeight = '500px';
-		cloudWrap.style.height = '35%';
 	} else {
 		console.log('visible');
 		cloudWrap.classList.remove('hover');

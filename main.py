@@ -5,10 +5,6 @@ from jobsearch import *
 
 app = Flask(__name__)
 
-jobTitle_h1 = ''
-location_h1 = '' 
-
-
 @app.route("/")
 def main():
 	return render_template('index.html')

@@ -324,6 +324,13 @@ h2 {
 	box-shadow: inset 0px -1px 5px 0px rgba(102,102,102,0.54);
 }
 
+@media (max-height: 1024px) {
+	.wrap-wide {
+		height: 10%;
+		max-height: 350px;
+	}
+}
+
 .wrap-wide img {
 	width: 100%;
 	max-height: 100%;
