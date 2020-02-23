@@ -4,38 +4,53 @@
 	<title>JobCloud</title>
 	<link rel="stylesheet" href="/static/css/styles.css/">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="/static/scripts.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/static/scripts.js"></script>
 </head>
 <body >
 <nav>
-	<img src="/static/img/logo-2.png">
+	<a href="#" onclick="abort()">
+		<img src="/static/img/logo-2.png">
+	</a>
+	<h1 id="headerLogo" style="font-weight: 300; font-size: 28px">Job<span class="bold-font">Cloud</span></h1>
 	<button class="btn" type="button"><span>Compare CV</span></button>
 </nav>
 
-<section style="background-image: url('static/img/bg.jpg')">
+<section id="home_container" style="background-image: url('static/img/bg.jpg')">
 	<div class="wrap" id="searchContainer">
 		<h1 id="title" style="font-weight: 300">Job<span class="bold-font">Cloud</span></h1>
 		<h2 id="subtitle">Discover Exactly What Employers Want</h2>
 		<div class="search" id="search">
-			<form action="/getIP" method="POST">
+			<form>
 				<input type="text" name="jobTitle" class="searchTerm" id="searchTerm" placeholder="What are you looking for?" required="text">
 				<input type="text" name="location" class="searchLocation" id="searchLocation" placeholder="Location" required="text">
-				<a href=getIP id=test>
-					<button type="submit" class="searchButton" id="searchButton" onclick="fetchCloud()">
-						<i class="fa fa-search"></i>
-					</button>
-				</a> 
+				<button class="searchButton" id="searchButton" onclick="fetchCloud()">
+					<i class="fa fa-search"></i>
+				</button>
 			</form>
-			
 		</div>
 	</div>
 	<div class="lds-ellipsis" id="loadIcon"><div></div><div></div><div></div><div></div></div>
 </section>
 
-<script type="text/javascript">
+<section id="results_container">
+	<h1>{{title}} Jobs in {{loc}}</h1>
+	<div class="wrap">
+		<img id="cloud" src="">
+		<canvas id="c"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("c");
+			var ctx = canvas.getContext("2d");
 
-</script>
+			var image = new Image();
+			image.onload = function() {
+				ctx.drawImage(image, 0, 0);
+			};
+			image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==";
+		</script>
+	</div>
+</section>
+
 
 </body>
 </html>

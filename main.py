@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 import sys
+import json
 from jobsearch import *
 
 app = Flask(__name__)
 
-def retrieveClientIP():
-	print('client ip', file=sys.stderr)
-	return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+jobTitle_h1 = ''
+location_h1 = '' 
+
 
 @app.route("/")
 def main():
@@ -14,13 +15,17 @@ def main():
 
 @app.route('/getIP', methods=['POST', 'GET'])
 def background_process_test():
-    if request.method == 'POST':
-        jobTitle = request.form['jobTitle'] # suppose you have a email and password field
-        location = request.form['location']
 
-        getID(jobTitle, location)
+	jobTitle = request.form['jobTitle']
+	location = request.form['location']
 
-        return wordCloud(summaries)
+	if jobTitle and location:
+		js = JobSearch(jobTitle, location)
+		s = js.soup()
+		jsonCloud = js.wordCloud()
+		
+		return jsonify({'wordcloud' : jsonCloud, 'title' : jobTitle, 'loc' : location})
+
 
 if __name__ == '__main__':
 	app.run(debug=True)

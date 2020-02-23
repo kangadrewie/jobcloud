@@ -1,10 +1,4 @@
-# Python program to generate WordCloud 
-
-import requests
-import time
-import base64
-import re
-import bs4
+import requests, time, base64, re, bs4
 from io import BytesIO
 from bs4 import BeautifulSoup
 from wordcloud import WordCloud, STOPWORDS
@@ -13,67 +7,72 @@ matplotlib.use("TkAgg")
 from matplotlib import pyplot as plt
 import pandas as pd 
 
-jobTitle = 'teacher'
-location = 'dublin'
-dataJK = '13d62c79cae306c1'
+content = []
 
-url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(jobTitle, location)
-selectedURL = 'https://ie.indeed.com/viewjob?cmp=&jk={}'.format(dataJK)
+class JobSearch():
 
-print(url)
-page = requests.get(url)
-soup = BeautifulSoup(page.text, "html.parser")
+	def __init__(self, jobTitle, location):
+		self.jobTitle = jobTitle
+		self.location = location
 
-summaries = []
+	def jobTitle(self):
+		return self.jobTitle
 
-def getID(jobTitle, location):
-	url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(jobTitle, location)
-	selectedURL = 'https://ie.indeed.com/viewjob?cmp=&jk={}'.format(dataJK)
+	def location(self):
+		return self.location
 
-	print(url)
-	page = requests.get(url)
-	soup = BeautifulSoup(page.text, "html.parser")
+	def soup(self):
 
-	html = soup.findAll('div', attrs={'class': 'summary'})
-	for summary in html:
-		summaries.append(summary.text.strip())
-	return(summary)
+		url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(self.jobTitle, self.location)
+		page = requests.get(url)
+		soup = BeautifulSoup(page.text, "html.parser")
 
-def wordCloud(content):
+		html = soup.findAll('div', attrs={'class': 'summary'})
+		for summary in html:
+			content.append(summary.text.strip())
 
-	comment_words = ' '
-	stopwords = set(STOPWORDS) 
+		return
 
-	# iterate through the csv file 
-	for val in content:
+	def wordCloud(self):
 
-		tokens = val.split()
+		comment_words = ' '
+		stopwords_list = []
+		# stopwords_list = self.jobTitle.strip(' ')
+		function_words = ['an', 'do', 'and', 'the', 'of', 'by', 'with']
 
-		for i in range(len(tokens)): 
-			tokens[i] = tokens[i].lower() 
+		for j in function_words:
+			stopwords_list.append(j)
 
-		for words in tokens: 
-			comment_words = comment_words + words + ' '
+		stopwords = set(STOPWORDS)
+		print('list', stopwords_list)
 
-	wordcloud = WordCloud(width = 800, height = 800, 
-					background_color ='white', 
-					stopwords = stopwords, 
-					min_font_size = 18).generate(comment_words) 
+		for val in content:
 
-	# plot the WordCloud image
-	fig = plt.figure(figsize = (8, 8), facecolor = None) 
-	plt.imshow(wordcloud) 
-	plt.axis("off") 
-	plt.tight_layout(pad = 0)
+			tokens = val.split()
 
-	tmpfile = BytesIO()
-	fig.savefig(tmpfile, format='png')
-	encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
-	html = '<img src=\'data:image/png;base64,{}\'>'.format(encoded)
+			for i in range(len(tokens)): 
+				tokens[i] = tokens[i].lower() 
 
-	with open('test.html','w') as f:
-	    f.write(html)
+			for words in tokens: 
+				comment_words = comment_words + words + ' '
 
-	return(html)
+		wordcloud = WordCloud(width = 1280, height = 720, 
+						background_color ='white', 
+						stopwords = stopwords, 
+						min_font_size = 18).generate(comment_words) 
 
-# wordCloud(summaries)
+		fig = plt.figure(figsize = (8, 8), facecolor = None) 
+		plt.imshow(wordcloud) 
+		plt.axis("off") 
+		plt.tight_layout(pad = 0)
+
+		tmpfile = BytesIO()
+		fig.savefig(tmpfile, format='png')
+		encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
+		html = 'data:image/png;base64,{}\''.format(encoded)
+
+		print('WEBSCRAPING SUCCESFULLY COMPLETED')
+
+		return(html)
+
+
