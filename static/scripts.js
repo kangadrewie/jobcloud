@@ -64,7 +64,7 @@ function abort() {
 	loadIcon = document.getElementById('loadIcon');
 	searchBar.style.opacity = '1';
 	loadIcon.style.zIndex = '-10';
-	// loadIcon.style.opacity = '0';
+	loadIcon.style.opacity = '0';
 
 	let h1 = document.getElementById('title');
 	h1.style.top = '0px';
@@ -73,6 +73,29 @@ function abort() {
 	let header = document.getElementById('headerLogo');
 	header.style.top = '45px';
 	header.style.opacity = '0';
+
+}
+
+function cloudClick() {
+
+	cloudWrap = document.getElementById('cloud_wrapper');
+
+	if (cloudWrap.style.overflow === 'visible') {
+		console.log('hidden');
+		cloudWrap.style.overflow = 'hidden';
+		cloudWrap.classList.remove('no-hover');
+		cloudWrap.classList.add('hover');
+		cloudWrap.style.maxHeight = '500px';
+		cloudWrap.style.height = '35%';
+	} else {
+		console.log('visible');
+		// cloudWrap.style.height = 'auto';
+		cloudWrap.classList.remove('hover');
+		cloudWrap.classList.add('no-hover');
+		cloudWrap.style.overflow = 'visible';
+		cloudWrap.style.transform = 'scale(1)';
+		// cloudWrap.style.maxHeight = 'calc(100vh - 180px)';
+	}
 
 }
 
@@ -90,7 +113,6 @@ $(function () {
 			success: function (data) {
 				var output = JSON.stringify(data.wordcloud);
 				var stripped = output.slice(1,-2);
-				console.log(stripped);
 				$('#cloud').attr('src', stripped);
 				resultsContainer();
 			}
@@ -99,8 +121,3 @@ $(function () {
 	});
 
 });
-
-//Search Details
-function searchDetails(searchTerm, searchLocation) {
-
-}

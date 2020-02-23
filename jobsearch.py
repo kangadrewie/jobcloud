@@ -56,13 +56,13 @@ class JobSearch():
 			for words in tokens: 
 				comment_words = comment_words + words + ' '
 
-		wordcloud = WordCloud(width = 1280, height = 720, 
+		wordcloud = WordCloud(width = 1920, height = 1080, 
 						background_color ='white', 
 						stopwords = stopwords, 
 						min_font_size = 18).generate(comment_words) 
 
-		fig = plt.figure(figsize = (8, 8), facecolor = None) 
-		plt.imshow(wordcloud) 
+		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=300) 
+		plt.imshow(wordcloud, interpolation='bilinear') 
 		plt.axis("off") 
 		plt.tight_layout(pad = 0)
 

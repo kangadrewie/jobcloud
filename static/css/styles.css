@@ -298,7 +298,6 @@ h2 {
 	height: auto;
 	z-index: 99;
 	background-color: white;
-	padding-top: 20px;
 	display: flex;
 	flex-basis: 100%;
 	flex-wrap: wrap;
@@ -307,15 +306,50 @@ h2 {
 	transition: all 0.8s;
 }
 
-#results_container h1 {
+.wrap-wide{
 	width: 100%;
-	display: block;
-	font-size: 28px;
-	color: #333;
+	height: 35%;
+	max-height: 500px;
+	position: relative;
+	top: 0;
+	left: 0;
+	transition: all 0.6s;
+	object-fit: contain;
+	overflow: hidden;
+}
+
+.wrap-wide img {
+	width: 100%;
+	max-height: 100%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+
+	transition: all 0.5s;
+}
+
+.hover img:hover {
+	transform: scale(1.1);
+	filter: brightness(95%);
+	cursor: pointer;
+}
+
+.no-hover img:hover {
+	transform: scale(1);
+	filter: brightness(100%);
+}
+
+#results_container h1 {
+	position: relative;
+	top: 540px;
+	left: 0;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	width: 100%;
+	font-size: 28px;
+	color: #333;
 }
 
 #result_container h2 {
@@ -324,10 +358,7 @@ h2 {
 	color: #333;
 }
 
-#results_container img {
+canvas {
 	width: 100%;
-	max-height: calc(100vh - 360px);
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	height: 500px;
 }
