@@ -33,6 +33,13 @@ class JobSearch():
 
 		return
 
+	def hslColor(self, word=None, font_size=None, position=None,  orientation=None, font_path=None, random_state=None):
+		h = int(360.0 * 140.0 / 255.0)
+		s = int(100.0 * 255.0 / 255.0)
+		l = int(100.0 * float(random_state.randint(60, 160)) / 255.0)
+
+		return "hsl({}, {}%, {}%)".format(h, s, l)
+
 	def wordCloud(self):
 
 		comment_words = ' '
@@ -59,9 +66,10 @@ class JobSearch():
 		wordcloud = WordCloud(width = 1920, height = 1080, 
 						background_color ='white', 
 						stopwords = stopwords, 
-						min_font_size = 18).generate(comment_words) 
+						min_font_size = 18,
+						color_func=self.hslColor).generate(comment_words) 
 
-		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=300) 
+		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=450) 
 		plt.imshow(wordcloud, interpolation='bilinear') 
 		plt.axis("off") 
 		plt.tight_layout(pad = 0)

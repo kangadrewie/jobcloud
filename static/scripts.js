@@ -9,12 +9,6 @@ function fetchCloud() {
 	searchContainer.style.opacity = '1';
 	h1.style.top = '0px';
 	h1.style.fontSize = '28px';
-	// searchTerm.style.backgroundColor = 'transparent';
-	// searchLocation.style.backgroundColor = 'transparent';
-
-	// searchTerm.style.opacity = '0';
-	// searchLocation.style.opacity = '0';
-	// searchButton.style.opacity
 	searchBar.style.opacity = '0';
 	loadIcon.style.zIndex = '10';
 	loadIcon.style.opacity = '1';
@@ -84,17 +78,16 @@ function cloudClick() {
 		console.log('hidden');
 		cloudWrap.style.overflow = 'hidden';
 		cloudWrap.classList.remove('no-hover');
+		cloudWrap.style.transition = 'all 0.5s';
 		cloudWrap.classList.add('hover');
 		cloudWrap.style.maxHeight = '500px';
 		cloudWrap.style.height = '35%';
 	} else {
 		console.log('visible');
-		// cloudWrap.style.height = 'auto';
 		cloudWrap.classList.remove('hover');
 		cloudWrap.classList.add('no-hover');
+		cloudWrap.style.transition = 'none';
 		cloudWrap.style.overflow = 'visible';
-		cloudWrap.style.transform = 'scale(1)';
-		// cloudWrap.style.maxHeight = 'calc(100vh - 180px)';
 	}
 
 }
