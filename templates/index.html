@@ -3,9 +3,10 @@
 <head>
 	<title>JobCloud</title>
 	<link rel="stylesheet" href="/static/css/styles.css/">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="/static/scripts.js"></script>
+	<script src="https://kit.fontawesome.com/3250b2ef84.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body >
 <nav>
@@ -34,11 +35,19 @@
 </section>
 
 <section id="results_container">
-	<div class="wrap-wide hover" id="cloud_wrapper" onclick="cloudClick()">
-		<img id="cloud" src="">
+	<div class="wrap-wide" id="cloud_wrapper" onclick="cloudClick()" onmousemove="hover()" onmouseleave="noHover()">
+		<i class="fas fa-compress" id="fullscreen"></i>
+		<img class="cloud" src="">
 	</div>
 	<title></title>
 </section>
+
+<div id="popup" onclick="cloudClose()">
+	<div class="wrap-popup" id="popup-content">
+		<span id="close" onclick="cloudClose()">&times;</span>
+		<img class="cloud" src="static/img/bg.jpg">
+	</div>
+</div>
 
 
 </body>

@@ -68,25 +68,33 @@ function abort() {
 
 }
 
-function cloudClick() {
-
-	cloudWrap = document.getElementById('cloud_wrapper');
-
-	if (cloudWrap.style.overflow === 'visible') {
-		console.log('hidden');
-		cloudWrap.style.overflow = 'hidden';
-		cloudWrap.classList.remove('no-hover');
-		cloudWrap.style.transition = 'all 0.5s';
-		cloudWrap.classList.add('hover');
-	} else {
-		console.log('visible');
-		cloudWrap.classList.remove('hover');
-		cloudWrap.classList.add('no-hover');
-		cloudWrap.style.transition = 'none';
-		cloudWrap.style.overflow = 'visible';
-	}
-
+function hover() {
+	fullscreen = document.getElementById('fullscreen');
+	fullscreen.style.opacity = '0.3';
 }
+
+function noHover() {
+	fullscreen = document.getElementById('fullscreen');
+	fullscreen.style.opacity = '0';
+}
+
+function cloudClick() {
+	popup = document.getElementById('popup');
+	popupContent = document.getElementById('popup-content');
+	popup.style.display = 'block';
+	popup.style.opacity = '1';
+}
+
+function cloudClose() {
+	popup = document.getElementById('popup');
+	popup.style.opacity = '0';
+	popup.style.display = 'none';	
+}
+
+function cap(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 //POST SEARCH
 $(function () {
@@ -102,8 +110,8 @@ $(function () {
 			success: function (data) {
 				var output = JSON.stringify(data.wordcloud);
 				var stripped = output.slice(1,-2);
-				$('#cloud').attr('src', stripped);
-				$('title').text(data.title + ' Jobs in ' + data.loc)
+				$('.cloud').attr('src', stripped);
+				$('title').text(cap(data.title) + ' Jobs in ' + cap(data.loc))
 				resultsContainer();
 			}
 		});

@@ -80,7 +80,7 @@ class JobSearch():
 						min_font_size = 18,
 						color_func=self.hslColor).generate(comment_words) 
 
-		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=300) 
+		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=72) 
 		plt.imshow(wordcloud, interpolation='bilinear') 
 		plt.axis("off") 
 		plt.tight_layout(pad = 0)
