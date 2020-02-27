@@ -23,6 +23,7 @@ class JobSearch():
 		return self.location
 
 	def soup(self):
+		
 		url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(self.jobTitle, self.location)
 		print(url)
 		page = requests.get(url)
@@ -45,7 +46,7 @@ class JobSearch():
 
 		comment_words = ' '
 		tokens = ' '
-		word = ' '
+		words = ' '
 		stopwords_list = []
 
 		jobTitle_list = self.jobTitle.split(' ')
@@ -85,7 +86,7 @@ class JobSearch():
 		fig.savefig(tmpfile, format='png')
 		encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
 		html = 'data:image/png;base64,{}\''.format(encoded)
-
+		tmpfile.close()
 		print('WEBSCRAPING SUCCESFULLY COMPLETED')
 
 		return(html)

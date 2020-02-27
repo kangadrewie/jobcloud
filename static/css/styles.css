@@ -342,7 +342,10 @@ h2 {
 }
 
 .hover img:hover {
+	-webkit-transition: scale(1.1);
 	transition: scale(1.1);
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
 	filter: brightness(90%);
 }
 
