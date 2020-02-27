@@ -13,8 +13,6 @@ function fetchCloud() {
 	loadIcon.style.zIndex = '10';
 	loadIcon.style.opacity = '1';
 	searchBar.style.cursor = 'none';
-	console.log('test');
-
 
 }
 
@@ -105,6 +103,7 @@ $(function () {
 				var output = JSON.stringify(data.wordcloud);
 				var stripped = output.slice(1,-2);
 				$('#cloud').attr('src', stripped);
+				$('title').text(data.title + ' Jobs in ' + data.loc)
 				resultsContainer();
 			}
 		});

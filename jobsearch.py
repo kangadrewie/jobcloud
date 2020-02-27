@@ -23,16 +23,19 @@ class JobSearch():
 		return self.location
 
 	def soup(self):
-		
+
 		url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(self.jobTitle, self.location)
 		print(url)
 		page = requests.get(url)
 		soup = BeautifulSoup(page.text, "html.parser")
 
-		html = soup.findAll('div', attrs={'class': 'summary'})
-		for summary in html:
-			content.append(summary.text.strip())
-		print('CONTENT = ', content)
+		for tag in soup.findAll('div', attrs={'class': 'jobsearch-SerpJobCard'}):
+			openURL = 'https://ie.indeed.com/viewjob?cmp=&jk={}'.format(tag.get('data-jk'))
+			openPage = requests.get(openURL)
+			openSoup = BeautifulSoup(openPage.text, "html.parser")
+			for summary in openSoup.findAll('div', attrs={'id': 'jobDescriptionText'}):
+				content.append(summary.text.strip())
+
 		return content
 
 	def hslColor(self, word=None, font_size=None, position=None,  orientation=None, font_path='/static/fonts/OpenSans-Bold.ttf', random_state=None):
