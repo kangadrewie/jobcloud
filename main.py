@@ -98,7 +98,7 @@ def main():
 	return render_template('index.html')
 
 @app.route('/?jobTitle=<jobTitle>&location=<location>', methods=['POST', 'GET'])
-def background_process_test():
+def background_process_test(jobTitle, location):
 
 	jobTitle = request.form['jobTitle']
 	location = request.form['location']
