@@ -298,10 +298,10 @@ h2 {
 	height: auto;
 	z-index: 99;
 	background-color: white;
-/*	display: flex;
+	display: flex;
 	flex-basis: 100%;
 	flex-wrap: wrap;
-	object-fit: contain;*/
+	object-fit: contain;
 
 
 	transition: all 0.8s;
@@ -333,34 +333,25 @@ h2 {
 
 .wrap-wide img {
 	width: 100%;
-/*	max-height: 100%;*/
+	max-height: 100%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 
-	transition: all 0.6s ease-in-out;
+	transition: all 0.3s;
 }
 
-#fullscreen {
-	position: absolute;
-	top: 46%;
-	left: 46%;
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 80px;
-	text-align: center;
-	z-index: 200;
-	opacity: 0;
-
-	transition: all 0.2s;
+.hover img:hover {
+	-webkit-transition: scale(1.1);
+	transition: scale(1.1);
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
+	filter: brightness(90%);
 }
 
-.wrap-wide img:hover {
-	-webkit-transform: scale(1.05);
-	-moz-transform: scale(1.05);
-	-o-transform: scale(1.05);
-	transform: scale(1.05);
+.no-hover img:hover {
+	/*transform: scale(1);*/
+	filter: brightness(100%);
 }
 
 #results_container h1 {
@@ -378,54 +369,7 @@ h2 {
 	color: #333;
 }
 
-
-title {
-	position: relative;
-	display: block;
-	font-weight: 300;
-	font-size: 28px;
-	color: #333;
-	margin-top: 35px;
-	margin-left: 6%;
-}
-
-
-/*#######################################################*/
-
-#popup {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	z-index: 999;
-	opacity: 0;
-
-	transition: all 0.6s ease-in-out;
-}
-
-.wrap-popup{
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
-	width: 95%; /* Could be more or less, depending on screen size */
-	z-index: 1000;
-
-	transition: all 0.6s ease-in-out;
-}
-
-.wrap-popup img {
+canvas {
 	width: 100%;
-}
-
-#close {
-	color: #aaa;
-	float: right;
-	font-size: 38px;
-	font-weight: bold;
-	cursor: pointer;
+	height: 500px;
 }

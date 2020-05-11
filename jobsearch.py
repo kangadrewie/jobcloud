@@ -23,19 +23,15 @@ class JobSearch():
 		return self.location
 
 	def soup(self):
-
 		url = 'https://ie.indeed.com/jobs?q={}&l={}'.format(self.jobTitle, self.location)
 		print(url)
 		page = requests.get(url)
 		soup = BeautifulSoup(page.text, "html.parser")
 
-		for tag in soup.findAll('div', attrs={'class': 'jobsearch-SerpJobCard'}):
-			openURL = 'https://ie.indeed.com/viewjob?cmp=&jk={}'.format(tag.get('data-jk'))
-			openPage = requests.get(openURL)
-			openSoup = BeautifulSoup(openPage.text, "html.parser")
-			for summary in openSoup.findAll('div', attrs={'id': 'jobDescriptionText'}):
-				content.append(summary.text.strip())
-
+		html = soup.findAll('div', attrs={'class': 'summary'})
+		for summary in html:
+			content.append(summary.text.strip())
+		print('CONTENT = ', content)
 		return content
 
 	def hslColor(self, word=None, font_size=None, position=None,  orientation=None, font_path='/static/fonts/OpenSans-Bold.ttf', random_state=None):
@@ -49,7 +45,7 @@ class JobSearch():
 
 		comment_words = ' '
 		tokens = ' '
-		words = ' '
+		word = ' '
 		stopwords_list = []
 
 		jobTitle_list = self.jobTitle.split(' ')
@@ -80,7 +76,7 @@ class JobSearch():
 						min_font_size = 18,
 						color_func=self.hslColor).generate(comment_words) 
 
-		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=72) 
+		fig = plt.figure(figsize = (19.2, 10.8), facecolor = None, dpi=300) 
 		plt.imshow(wordcloud, interpolation='bilinear') 
 		plt.axis("off") 
 		plt.tight_layout(pad = 0)
@@ -89,7 +85,7 @@ class JobSearch():
 		fig.savefig(tmpfile, format='png')
 		encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
 		html = 'data:image/png;base64,{}\''.format(encoded)
-		tmpfile.close()
+
 		print('WEBSCRAPING SUCCESFULLY COMPLETED')
 
 		return(html)

@@ -13,6 +13,8 @@ function fetchCloud() {
 	loadIcon.style.zIndex = '10';
 	loadIcon.style.opacity = '1';
 	searchBar.style.cursor = 'none';
+	console.log('test');
+
 
 }
 
@@ -68,33 +70,25 @@ function abort() {
 
 }
 
-function hover() {
-	fullscreen = document.getElementById('fullscreen');
-	fullscreen.style.opacity = '0.3';
-}
-
-function noHover() {
-	fullscreen = document.getElementById('fullscreen');
-	fullscreen.style.opacity = '0';
-}
-
 function cloudClick() {
-	popup = document.getElementById('popup');
-	popupContent = document.getElementById('popup-content');
-	popup.style.display = 'block';
-	popup.style.opacity = '1';
-}
 
-function cloudClose() {
-	popup = document.getElementById('popup');
-	popup.style.opacity = '0';
-	popup.style.display = 'none';	
-}
+	cloudWrap = document.getElementById('cloud_wrapper');
 
-function cap(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+	if (cloudWrap.style.overflow === 'visible') {
+		console.log('hidden');
+		cloudWrap.style.overflow = 'hidden';
+		cloudWrap.classList.remove('no-hover');
+		cloudWrap.style.transition = 'all 0.5s';
+		cloudWrap.classList.add('hover');
+	} else {
+		console.log('visible');
+		cloudWrap.classList.remove('hover');
+		cloudWrap.classList.add('no-hover');
+		cloudWrap.style.transition = 'none';
+		cloudWrap.style.overflow = 'visible';
+	}
 
+}
 
 //POST SEARCH
 $(function () {
@@ -110,8 +104,7 @@ $(function () {
 			success: function (data) {
 				var output = JSON.stringify(data.wordcloud);
 				var stripped = output.slice(1,-2);
-				$('.cloud').attr('src', stripped);
-				$('title').text(cap(data.title) + ' Jobs in ' + cap(data.loc))
+				$('#cloud').attr('src', stripped);
 				resultsContainer();
 			}
 		});
