@@ -99,7 +99,7 @@ $(function () {
 
 		$.ajax({
 			type: 'post',
-			url: '/getIP',
+			url: '/search',
 			data: $('form').serialize(),
 			success: function (data) {
 				var output = JSON.stringify(data.wordcloud);
