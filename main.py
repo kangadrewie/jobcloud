@@ -98,11 +98,11 @@ def main():
 	print('main starting up')
 	return render_template('index.html')
 
-@app.route('/getIP', methods=['POST', 'GET'])
+@app.route('/?jobTitle=<jobTitle>&location=<location>', methods=['POST', 'GET'])
 def background_process_test(jobTitle, location):
 
-	jobTitle = request.form['jobTitle']
-	location = request.form['location']
+	# jobTitle = request.form['jobTitle']
+	# location = request.form['location']
 
 	print(jobTitle, location, 'printing')
 
