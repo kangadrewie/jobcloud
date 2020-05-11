@@ -95,9 +95,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
+	print('main starting up')
 	return render_template('index.html')
 
-@app.route('/?jobTitle=<jobTitle>&location=<location>', methods=['POST', 'GET'])
+@app.route('/getIP', methods=['POST', 'GET'])
 def background_process_test(jobTitle, location):
 
 	jobTitle = request.form['jobTitle']
