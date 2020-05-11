@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import sys
 import json
-import requests, time, base64, re, bs4
+import requests, time, base64, re, bs4, tkinter
 from io import BytesIO
 from bs4 import BeautifulSoup
 from wordcloud import WordCloud, STOPWORDS
