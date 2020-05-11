@@ -5,6 +5,7 @@ import requests, time, base64, re, bs4, tkinter
 from io import BytesIO
 from bs4 import BeautifulSoup
 from wordcloud import WordCloud, STOPWORDS
+import matplotlib.backends.backend_tkagg
 import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib import pyplot as plt
