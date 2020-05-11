@@ -103,6 +103,8 @@ def background_process_test(jobTitle, location):
 	jobTitle = request.form['jobTitle']
 	location = request.form['location']
 
+	print(jobTitle, location, 'printing')
+
 	if jobTitle and location:
 		js = JobSearch(jobTitle, location)
 		s = js.soup()
