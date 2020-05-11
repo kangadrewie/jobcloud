@@ -1,13 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-import sys
-import json
-import requests, time, base64, re, bs4, tkinter
+import sys, json, requests, time, base64, re, bs4
 from io import BytesIO
 from bs4 import BeautifulSoup
 from wordcloud import WordCloud, STOPWORDS
-import matplotlib.backends.backend_tkagg
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 import pandas as pd 
 
