@@ -72,7 +72,7 @@ class JobSearch():
 
 		wordcloud = WordCloud(width = 1920, height = 1080, 
 						background_color ='white',
-						font_path='/app/static/fonts/OpenSans-Bold.TTF',
+						font_path='/Users/andrewgorman/Dropbox/! Code/JobSearch WordCloud/static/fonts/OpenSans-Bold.TTF',
 						stopwords = stopwords, 
 						min_font_size = 18,
 						color_func=self.hslColor).generate(comment_words) 
@@ -97,7 +97,7 @@ app = Flask(__name__)
 def main():
 	return render_template('index.html')
 
-@app.route('/getIP', methods=['POST', 'GET'])
+@app.route('/?jobTitle=<jobTitle>&location=<location>', methods=['POST', 'GET'])
 def background_process_test():
 
 	jobTitle = request.form['jobTitle']
