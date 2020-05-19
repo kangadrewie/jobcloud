@@ -23,25 +23,3 @@ $(document).ready(function() {
 	});
 
 });
-
-
-
-// function fetchCloud() {
-// 	let h1 = document.getElementById('title');
-// 	searchContainer = document.getElementById('searchContainer');
-// 	searchTerm = document.getElementById('searchTerm');
-// 	searchLocation = document.getElementById('searchLocation');
-// 	searchBar = document.getElementById('search');
-// 	loadIcon = document.getElementById('loadIcon');
-
-// 	searchContainer.style.opacity = '1';
-// 	h1.style.top = '0px';
-// 	h1.style.fontSize = '28px';
-// 	searchBar.style.opacity = '0';
-// 	loadIcon.style.zIndex = '10';
-// 	loadIcon.style.opacity = '1';
-// 	searchBar.style.cursor = 'none';
-// 	console.log('test');
-
-
-// }
