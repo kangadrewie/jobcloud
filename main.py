@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import sys, json, requests, time, base64, re, bs4
 from io import BytesIO
 from bs4 import BeautifulSoup
@@ -10,6 +10,12 @@ import pandas as pd
 
 content = []
 
+srcCloud = ''
+
+class DataStore():
+	srcCloud = None
+
+data = DataStore()
 
 class JobSearch():
 
@@ -72,7 +78,7 @@ class JobSearch():
 
 		wordcloud = WordCloud(width = 1920, height = 1080, 
 						background_color ='white',
-						font_path='/Users/andrewgorman/Dropbox/! Code/JobSearch WordCloud/static/fonts/OpenSans-Bold.TTF',
+						font_path='/Users/andrewgorman/Documents/jobcloud/static/fonts/OpenSans-Bold.TTF',
 						stopwords = stopwords, 
 						min_font_size = 18,
 						color_func=self.hslColor).generate(comment_words) 
@@ -95,23 +101,45 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-	print('main starting up')
+
 	return render_template('index.html')
 
-@app.route('/search', methods=['POST', 'GET'])
-def background_process_test():
+
+@app.route('/searching-catalog', methods=['POST'])
+def background_processes():
 
 	jobTitle = request.form['jobTitle']
 	location = request.form['location']
 
-	print(jobTitle, location, 'printing')
-
 	if jobTitle and location:
 		js = JobSearch(jobTitle, location)
 		s = js.soup()
-		jsonCloud = js.wordCloud()
+		srcCloud = js.wordCloud()
+		data.srcCloud = srcCloud
+
+	return "Webscraping Complete"
+
+@app.route('/search-results', methods=['GET'])
+def display_search_results():
+	x = data.srcCloud
+	outputImage = x[0:-1]
+	print(outputImage)
+	return render_template('search.html', outputImage=outputImage)
+
+# @app.route('/search', methods=['POST', 'GET'])
+# def background_process_test():
+
+# 	jobTitle = request.form['jobTitle']
+# 	location = request.form['location']
+
+# 	print(jobTitle, location, 'printing')
+
+# 	if jobTitle and location:
+# 		js = JobSearch(jobTitle, location)
+# 		s = js.soup()
+# 		jsonCloud = js.wordCloud()
 		
-		return jsonify({'wordcloud' : jsonCloud, 'title' : jobTitle, 'loc' : location})
+# 		return render_template('search.html')
 
 
 if __name__ == '__main__':
